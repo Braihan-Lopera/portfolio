@@ -1,0 +1,116 @@
+.project-detail {
+  padding-block: clamp(2.5rem, 6vh, 4rem) var(--space-section);
+}
+
+.project-detail__back {
+  display: inline-flex;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.project-detail__back:hover {
+  color: var(--color-text-strong);
+}
+
+.project-detail__header {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.project-detail__year {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.project-detail__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: var(--lh-tight);
+  margin-bottom: 1.25rem;
+}
+
+.project-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-detail__tag {
+  padding: 0.25rem 0.65rem;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.project-detail__intro {
+  max-width: 680px;
+  font-size: var(--fs-lg);
+  color: var(--color-text-strong);
+  margin-bottom: 3rem;
+}
+
+.project-detail__block {
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+.project-detail__block-heading {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.project-detail__block-text {
+  color: var(--color-text-muted);
+  font-size: var(--fs-base);
+}
+
+.project-detail__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.project-detail__figure {
+  /* Reset de botón: se ve y se comporta como la figura que reemplaza */
+  display: block;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  overflow: hidden;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.project-detail__figure:hover {
+  border-color: var(--color-border-strong);
+}
+
+.project-detail__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+
+.project-detail__figure:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 620px) {
+  .project-detail__gallery {
+    grid-template-columns: 1fr;
+  }
+}

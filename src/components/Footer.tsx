@@ -1,11 +1,12 @@
+import { Link } from "react-router";
 import "./Footer.css";
 import { socials } from "../data/socials";
 
 const NAV_LINKS = [
-  { href: "#about", label: "Sobre mí" },
-  { href: "#skills", label: "Habilidades" },
-  { href: "#projects", label: "Proyectos" },
-  { href: "#contact", label: "Contacto" },
+  { href: "/#about", label: "Sobre mí" },
+  { href: "/#skills", label: "Habilidades" },
+  { href: "/#projects", label: "Proyectos" },
+  { href: "/#contact", label: "Contacto" },
 ];
 
 export default function Footer() {
@@ -15,17 +16,17 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__top">
         <div className="footer__brand">
-          <a href="#top" className="footer__name">
+          <Link to="/" className="footer__name">
             Braihan Lopera
-          </a>
+          </Link>
           <p className="footer__tagline">Desarrollador de software</p>
         </div>
 
         <nav className="footer__nav" aria-label="Navegación del pie">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="footer__link">
+            <Link key={link.href} to={link.href} className="footer__link">
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

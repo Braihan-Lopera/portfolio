@@ -102,6 +102,13 @@
   border-radius: var(--radius-sm);
 }
 
+.card__cta {
+  margin-top: 1.25rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
 .card__links {
   display: flex;
   gap: 1.25rem;

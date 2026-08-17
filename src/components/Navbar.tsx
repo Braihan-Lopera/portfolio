@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import "./Navbar.css";
 
 const LINKS = [
-  { href: "#about", label: "Sobre mí" },
-  { href: "#skills", label: "Habilidades" },
-  { href: "#projects", label: "Proyectos" },
-  { href: "#contact", label: "Contacto" },
+  { href: "/#about", label: "Sobre mí" },
+  { href: "/#skills", label: "Habilidades" },
+  { href: "/#projects", label: "Proyectos" },
+  { href: "/#contact", label: "Contacto" },
 ];
 
 export default function Navbar() {
@@ -45,13 +46,13 @@ export default function Navbar() {
           <ul className="navbar__links">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="navbar__link"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

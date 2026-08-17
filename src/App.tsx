@@ -1,23 +1,15 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { Route, Routes } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/proyectos/:id" element={<ProjectDetail />} />
+      </Route>
+    </Routes>
   );
 }

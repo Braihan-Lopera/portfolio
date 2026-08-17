@@ -5,13 +5,12 @@ import {
   SiPython,
   SiReact,
   SiJavascript,
-  SiHtml5,
-  SiCss,
   SiGit,
   SiLinux,
   SiDocker,
+  SiSpringboot,
 } from "react-icons/si";
-import { FaDatabase, FaFileExcel, FaServer } from "react-icons/fa6";
+import { FaDatabase, FaFileExcel, FaServer, FaJava } from "react-icons/fa6";
 import SectionHeader from "./SectionHeader";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
@@ -41,10 +40,10 @@ const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Desarrollo",
     items: [
+      { name: "Java", Icon: FaJava, color: "#ED8B00" },
+      { name: "Spring Boot", Icon: SiSpringboot, color: "#6DB33F" },
       { name: "React", Icon: SiReact, color: "#61DAFB" },
       { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
-      { name: "HTML", Icon: SiHtml5, color: "#E34F26" },
-      { name: "CSS", Icon: SiCss, color: "#1572B6" },
       { name: "Git", Icon: SiGit, color: "#F05032" },
     ],
   },
