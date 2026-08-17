@@ -1,0 +1,74 @@
+.contact__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 4rem);
+  background:
+    radial-gradient(600px 300px at 50% 0%, var(--color-surface-soft), transparent 70%),
+    var(--color-surface-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+}
+
+.contact__index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.contact__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.contact__text {
+  max-width: 44ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+  margin-bottom: 2rem;
+}
+
+.contact__email {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-border);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.contact__email:hover {
+  border-color: var(--color-text-strong);
+}
+
+.contact__socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.contact__social {
+  display: inline-flex;
+  padding: 0.5rem 1.25rem;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.contact__social:hover {
+  color: var(--color-text-strong);
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}

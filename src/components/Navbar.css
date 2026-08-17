@@ -1,0 +1,142 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* Fondo translúcido con desenfoque para que el contenido pase por detrás */
+  background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+}
+
+.navbar__links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.navbar__link {
+  position: relative;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+/* Subrayado que crece desde la izquierda al pasar el cursor */
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-text-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-mid) var(--ease);
+}
+
+.navbar__link:hover {
+  color: var(--color-text-strong);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Botón hamburguesa: oculto en escritorio */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.navbar__toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-strong);
+  transition:
+    transform var(--dur-fast) var(--ease),
+    opacity var(--dur-fast) var(--ease);
+}
+
+/* Hamburguesa → X cuando el menú está abierto */
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Móvil: hamburguesa + menú desplegable ---- */
+@media (max-width: 640px) {
+  .navbar__inner {
+    justify-content: flex-end;
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+
+  /* Panel desplegable a lo ancho, debajo de la barra */
+  .navbar__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: color-mix(in srgb, var(--color-bg) 96%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    /* Aparición por opacidad + deslizamiento; altura natural del contenido */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity var(--dur-mid) var(--ease),
+      transform var(--dur-mid) var(--ease),
+      visibility var(--dur-mid) var(--ease);
+  }
+
+  .navbar__nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar__links {
+    flex-direction: column;
+    gap: 0;
+    padding-inline: var(--container-pad);
+  }
+
+  .navbar__link {
+    display: block;
+    padding-block: 1rem;
+    font-size: var(--fs-base);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  /* En táctil no hay hover; se quita el subrayado animado */
+  .navbar__link::after {
+    display: none;
+  }
+}

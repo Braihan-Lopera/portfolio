@@ -1,0 +1,32 @@
+# Evita copiar basura y secretos al contexto de build de Docker.
+# Cuanto menos entre a la imagen, menor superficie de fuga.
+node_modules
+dist
+dist-ssr
+
+.git
+.gitignore
+
+# Variables de entorno y secretos
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+
+# Logs y temporales
+*.log
+logs
+
+# Editor / OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Docs y meta que no necesita la imagen
+README.md
+DEPLOY.md
+.claude
