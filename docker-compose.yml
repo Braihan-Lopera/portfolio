@@ -5,21 +5,25 @@ services:
     container_name: portfolio
     restart: unless-stopped
 
-    # host:contenedor — el contenedor escucha en 8080 (nginx no-root).
-    # Cambia el puerto del host (izquierda) si 8080 ya está ocupado.
-    ports:
-      - "8080:8080"
+    # Sin publicar puertos en el host: el sitio SOLO es accesible por la red
+    # interna 'edge', a la que también se conecta cloudflared. Nada queda
+    # expuesto en la LAN — el único camino de entrada es el túnel.
+    networks:
+      - edge
 
     # ---- Endurecimiento de seguridad ----
-    # No permitir que el proceso gane privilegios nuevos.
     security_opt:
       - no-new-privileges:true
-    # Quitar TODAS las capabilities de Linux: un sitio estático no necesita ninguna.
     cap_drop:
       - ALL
-    # Sistema de archivos de solo lectura; nginx solo necesita escribir temporales.
     read_only: true
     tmpfs:
       - /tmp
       - /var/cache/nginx
       - /var/run
+
+# Red compartida con cloudflared. Se crea una sola vez con:
+#   docker network create edge
+networks:
+  edge:
+    external: true
